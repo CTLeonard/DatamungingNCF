@@ -1,0 +1,47 @@
+---
+title: "Assignment 6"
+author: "Chris Leonard"
+date: "September 10, 2016"
+output: pdf_document
+---
+
+```{r setup, include=TRUE}
+knitr::opts_chunk$set(echo = TRUE)
+
+kdata <- read.csv("C:\\Users\\Chris\\Desktop\\Temp_grad\\Mungs\\Assignment6_7\\chronic_kidney_disease.csv", header = TRUE)
+
+#We will begin with discritizing in bins of 5 observations
+
+str(kdata$pot)
+#We see a series of entries but ? is the most interesting
+#It appears we are missing data most likely from tests not administered
+#For future ref, K+ ion tests refer to in blood serum 
+
+charpot <- as.character(kdata$pot)
+
+paste(charpot)
+
+ques
+
+paste(noques)
+
+numpot <- as.numeric(kdata$pot)
+
+
+paste(numpot)
+
+summary(numpot)
+sum(grepl("[?]", charpot))
+##Here we see there are 88 individual missing data points. 
+##I am somewhat confused at the moment by my difference in summary information.
+##THe data here indicates urine Potassium excretion? Directory of information does ##not state what kind of potassium test is being undertaken
+
+quantile(numpot, probs=seq(0, 1, by=0.20), na.rm=TRUE)
+##here is a quantile analysis with 5 bins
+
+dis_pot_data_num <- cut(numpot, breaks=quantile(numpot, probs=seq(0, 1, by=0.20), na.rm=TRUE), include.lowest=TRUE)
+
+paste(dis_pot_data_num)
+
+
+```
